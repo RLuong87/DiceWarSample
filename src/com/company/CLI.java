@@ -27,10 +27,11 @@ public class CLI {
         }
     }
 
-    public static int getInt(int min, int max) {
+    public static int getInt(String question, int min, int max) {
 
         while (true) {
             try {
+                System.out.println(question);
                 int userInt = scan.nextInt();
                 if (userInt < min || userInt > max) {
                     System.out.println("The minimum amount of players are " + min + " & the max is " + max);

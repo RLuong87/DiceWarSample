@@ -2,21 +2,18 @@ package com.company;
 
 public class Menu {
 
-    private static String options;
-
     public static void displayGame() {
 
         System.out.println("Welcome to DICE WARS!!\nThe rules are quite simple");
-        System.out.println("Each player will take turns rolling dice, the player with the most points wins!");
-        options = CLI.getString("\nEnter the amount of players: ");
+        System.out.println("Each player will take turns rolling dice\nThe player with the most points wins!");
+        String numberOfPlayers = CLI.getString("\nEnter the amount of players: ");
+        String numberOfRounds = CLI.getString("Enter the amount of rounds: " );
+        String numberOfDice = CLI.getString("Enter the amount of dice: " );
+        Game diceGame = new Game(Integer.parseInt(numberOfPlayers), Integer.parseInt(numberOfRounds), Integer.parseInt(numberOfDice));
 
 
 
 
-    }
-
-    public static void setNumberOfPlayers() {
-        Game diceGame = new Game(0, 0, 0);
 
     }
 }

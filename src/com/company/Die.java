@@ -5,16 +5,16 @@ import java.util.Random;
 public class Die {
 
     private final Random random = new Random();
-    private final int sides;
+//    private final int sides;
     private final int value;
 
     public Die(int sides) {
-        this.sides = sides;
+        rollDice();
         this.value = getValue();
     }
 
     public void rollDice() {
-        int num = random.nextInt(sides) + 1;
+        int num = random.nextInt(6) + 1;
         System.out.println(num);
     }
 

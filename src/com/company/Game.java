@@ -6,16 +6,18 @@ public class Game {
 
     private ArrayList<Player> players = new ArrayList<>();
     private int numberOfRounds;
-    private int numberOfDice;
+    private ArrayList<Die> numberOfDice;
     private Player player;
+    private Object Die;
 
     public Game(int numberOfPlayers, int numberOfRounds, int numberOfDice) {
         this.numberOfRounds = numberOfRounds;
-        this.numberOfDice = numberOfDice;
+        this.numberOfDice = generateDice();
         generatePlayers(numberOfPlayers);
     }
 
     public void startGame() {
+
 
     }
 
@@ -37,6 +39,7 @@ public class Game {
     }
 
     private ArrayList<Die> generateDice() {
+        int number_of_dice = CLI.getInt("Enter number of dice", 2, 10);
 
         return null;
     }
