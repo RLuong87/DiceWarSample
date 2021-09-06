@@ -21,7 +21,7 @@ public class CLI {
                 return scan.nextInt();
 
             } catch (InputMismatchException exception) {
-                System.out.println("Enter a number between 2 & 10");
+                System.out.println("Enter a number between 1 & 10");
                 scan.nextLine();
             }
         }
@@ -34,7 +34,7 @@ public class CLI {
                 System.out.println(question);
                 int userInt = scan.nextInt();
                 if (userInt < min || userInt > max) {
-                    System.out.println("The minimum amount of players are " + min + " & the max is " + max);
+                    System.out.println("The minimum amount is " + min + " & the max is " + max);
                 } else {
                     return userInt;
                 }
@@ -43,5 +43,27 @@ public class CLI {
                 scan.nextLine();
             }
         }
+    }
+
+    public static char getChar(String question) {
+
+        while (true) {
+            System.out.print(question);
+            scan.nextLine();
+            char userChar = scan.next().toUpperCase().charAt(0);
+
+            if (userChar != ' ') {
+                return userChar;
+            } else {
+                System.out.println("Enter an operator!");
+            }
+        }
+    }
+
+    public static void exit() {
+        System.out.println("\n*************************************\n");
+        System.out.println("\tThank you, come again!");
+        System.exit(0);
+        scan.close();
     }
 }
