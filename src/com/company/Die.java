@@ -13,9 +13,8 @@ public class Die {
         this.value = getValue();
     }
 
-    public void rollDice() {
+    public void roll() {
         int num = random.nextInt(sides) + 1;
-        System.out.println(num);
     }
 
     public int getValue() {
