@@ -49,6 +49,14 @@ After the game has ended the program should return to the main menu where the us
 
     public static void main(String[] args) {
         Menu.displayGame();
+//        Menu.options();
+
+
+
+
+
+
+
 
         // Simple Pyramid
 //        for (int i = 0; i < 8; i++) {

@@ -10,6 +10,7 @@ public class CLI {
     public static String getString(String question) {
 
         System.out.print(question);
+        scan.next();
         return scan.nextLine();
     }
 
@@ -31,7 +32,7 @@ public class CLI {
 
         while (true) {
             try {
-                System.out.println(question);
+                System.out.print(question);
                 int userInt = scan.nextInt();
                 if (userInt < min || userInt > max) {
                     System.out.println("The minimum amount is " + min + " & the max is " + max);
@@ -49,13 +50,12 @@ public class CLI {
 
         while (true) {
             System.out.print(question);
-            scan.nextLine();
             char userChar = scan.next().toUpperCase().charAt(0);
 
             if (userChar != ' ') {
                 return userChar;
             } else {
-                System.out.println("Enter an operator!");
+                System.out.println("Invalid selection");
             }
         }
     }
@@ -65,5 +65,9 @@ public class CLI {
         System.out.println("\tThank you, come again!");
         System.exit(0);
         scan.close();
+    }
+
+    public static void proceed() {
+        scan.nextLine();
     }
 }

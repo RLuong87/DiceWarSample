@@ -8,72 +8,63 @@ public class Game {
     private int numberOfRounds;
     private int numberOfDice;
     private Player player;
-    private boolean turn = true;
 
     public Game(int numberOfPlayers, int numberOfRounds, int numberOfDice) {
 
-        // Generate number of rounds
+        // Set number of rounds
         this.numberOfRounds = numberOfRounds;
+
+        // Set number of dice
+        this.numberOfDice = numberOfDice;
 
         // Generate number of players
         generatePlayers(numberOfPlayers);
 
-        // Generate number of dice
-        generateDice(numberOfDice);
+        playerTurn(numberOfRounds);
+
 
     }
 
     public void startGame() {
         // Ask the user a series of questions,
-        String numberOfPlayers = CLI.getString("\nEnter the amount of players: ");
-        String numberOfRounds = CLI.getString("Enter the amount of rounds: ");
-        String numberOfDice = CLI.getString("Enter the amount of dice: ");
 
-        // Generate the dice wars game
-        Game diceGame = new Game(Integer.parseInt(numberOfPlayers), Integer.parseInt(numberOfRounds), Integer.parseInt(numberOfDice));
+
+        // Generate the game
 
     }
 
-    private void playerTurn(Player player) {
-        // Create a method to create a turn so each player can roll their dice
+    private void playerTurn(int turn) {
+        // Create a method to give each player a turn to roll their dice
+        while (turn > numberOfRounds) {
+
+            Die dice = new Die(numberOfDice);
+            dice.roll();
+        }
 
     }
 
     public void printScore() {
-
+        // Display the score of each player
 
     }
 
     private void generatePlayers(int numberOfPlayers) {
-        // Generates the amount of players
-        // add their names to an arraylist
+        // Generate the amount of players
+        // adds their names to an arraylist
         for (int i = 0; i < numberOfPlayers; i++) {
-            String name = CLI.getString("Enter your name\nName: ");
+            String name = CLI.getString("\nEnter your name\nName: ");
             Player newPlayer = new Player(name);
-            players.add(newPlayer); // Not sure if this work??
+            players.add(newPlayer);
+            newPlayer.playersDice = generateDice();
         }
     }
 
-    private ArrayList<Die> generateDice(int numberOfDice) {
+    private ArrayList<Die> generateDice() {
         ArrayList<Die> dice = new ArrayList<>();
-
         for (int i = 0; i < numberOfDice; i++) {
             Die die = new Die(numberOfDice);
-            String rollDice = CLI.getString("Your turn to roll!");
-            die.roll();
+            dice.add(die);
         }
-        return null;
-    }
-
-    public void options() {
-        // Option to start the game or exit the game
-        while (true) {
-            System.out.println("\nTo start the game, enter Y or to exit enter N");
-            char userChar = CLI.getChar("(" + "Y/N" + "): ");
-            switch (userChar) {
-                case 'Y' -> startGame();
-                case 'N' -> CLI.exit();
-            }
-        }
+        return dice;
     }
 }
