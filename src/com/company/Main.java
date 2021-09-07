@@ -48,8 +48,8 @@ After the game has ended the program should return to the main menu where the us
 */
 
     public static void main(String[] args) {
-        Menu.displayGame();
-//        Menu.options();
+//        Menu.displayGame();
+        Menu.options();
 
 
 

@@ -6,7 +6,6 @@ public class Menu {
 
         System.out.println("Welcome to DICE WARS!!\n");
         System.out.println("The rules are quite simple. Each player will take turns rolling dice\nThe player with the most points wins!");
-        userChoices();
     }
 
     public static void options() {
@@ -14,7 +13,7 @@ public class Menu {
         displayGame();
 
         while (true) {
-            System.out.println("\nTo start the game, enter Y or to exit enter N");
+            System.out.print("\nTo start the game, enter Y or to exit enter N ");
             char userChar = CLI.getChar("(" + "Y/N" + "): ");
             switch (userChar) {
                 case 'Y' -> userChoices();

@@ -62,7 +62,7 @@ public class CLI {
 
     public static void exit() {
         System.out.println("\n*************************************\n");
-        System.out.println("\tThank you, come again!");
+        System.out.println("Hope you had good time, until we play again!");
         System.exit(0);
         scan.close();
     }
