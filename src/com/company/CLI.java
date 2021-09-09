@@ -22,7 +22,7 @@ public class CLI {
                 return scan.nextInt();
 
             } catch (InputMismatchException exception) {
-                System.out.println("Enter a number between 1 & 10");
+                System.out.println("\nEnter a number between 1 & 10");
                 scan.nextLine();
             }
         }
@@ -35,12 +35,12 @@ public class CLI {
                 System.out.print(question);
                 int userInt = scan.nextInt();
                 if (userInt < min || userInt > max) {
-                    System.out.println("The minimum amount is " + min + " & the max is " + max);
+                    System.out.println("\nThe minimum amount is " + min + " & the max is " + max + "\n");
                 } else {
                     return userInt;
                 }
             } catch (InputMismatchException exception) {
-                System.out.println("Enter a number between " + min + " & " + max);
+                System.out.println("\nEnter a number between " + min + " & " + max);
                 scan.nextLine();
             }
         }
@@ -55,13 +55,13 @@ public class CLI {
             if (userChar != ' ') {
                 return userChar;
             } else {
-                System.out.println("Invalid selection");
+                System.out.println("\nInvalid selection");
             }
         }
     }
 
     public static void exit() {
-        System.out.println("\n*************************************\n");
+        System.out.println("\n" + "*".repeat(45) + "\n");
         System.out.println("Hope you had good time, until we play again!");
         System.exit(0);
         scan.close();

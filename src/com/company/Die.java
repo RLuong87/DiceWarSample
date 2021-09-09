@@ -13,7 +13,7 @@ public class Die {
         this.value = getValue();
     }
 
-    public int roll() {
+    public int diceRoll() {
         return random.nextInt(sides) + 1;
     }
 
