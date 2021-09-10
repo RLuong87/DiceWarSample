@@ -20,9 +20,8 @@ public class Game {
         // Generate number of players
         generatePlayers(numberOfPlayers);
         showPlayers();
-        startGame();
+//        setNumberOfDice(generateDice());
         rounds(numberOfRounds);
-        setNumberOfDice(numberOfDice);
 //        playerTurn();
     }
 
@@ -42,30 +41,45 @@ public class Game {
 
         for (Player player : players) {
 
-            System.out.println("\n" + player.getName() + " rolled a " + dice.diceRoll());
+            setNumberOfDice(generateDice());
+//            System.out.println("\n" + player.getName() + " rolled a " + dice.diceRoll());
         }
     }
 
-    public void setNumberOfDice(int numberOfDice) {
+    public void setNumberOfDice(ArrayList<Die> numberOfDice) {
 
-        for (int i = 0; i < numberOfDice; i++) {
-            System.out.println("You rolled a " + dice.diceRoll());
+        for (int i = 0; i < numberOfDice.size(); i++) {
+
+            for (Player p : players) {
+
+                System.out.printf("%s rolled a %d\n", p.getName(), dice.diceRoll());
+            }
         }
     }
 
     public void rounds(int numberOfRounds) {
         // Create a method to give each player a turn to roll their dice
-        while (true) {
-            for (int i = 0; i < numberOfRounds; i++) {
-
-                startGame();
-                System.out.println("\nReady for the next round?\nPress enter to go again!");
-                CLI.proceed();
-            }
+        for (int i = 0; i < numberOfRounds; i++) {
+            setNumberOfDice(generateDice());
+            System.out.println("""
+                    Ready for the next round?
+                                        
+                    Press enter my friend!
+                    """);
+            CLI.proceed();
         }
+        System.out.println("""
+                You have reached the end my fellow Warriors!
+                                
+                If I do not see your faces again then farewell Brave Warriors!
+                                
+                If you wish to play again then simply press enter.
+                """);
     }
 
     public void playerTurn(Player player) {
+
+
 
     }
 
@@ -77,7 +91,7 @@ public class Game {
     public void showPlayers() {
         for (int i = 0; i < players.size(); i++) {
             Player player = players.get(0);
-            System.out.println(i + 1 + ") " + player.getName());
+            System.out.println(i + 1 + ") " + player.getName() + "\n");
         }
     }
 

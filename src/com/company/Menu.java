@@ -34,8 +34,8 @@ public class Menu {
         int numberOfRounds = CLI.getInt("\nEnter the amount of rounds (1 round minimum & 10 rounds max): ", 1, 10);
         int numberOfDice = CLI.getInt("\nEnter the amount of dice (1 die minimum & 10 dice max): ", 1, 10);
         System.out.println("\n" + "_".repeat(100) + "\n");
-        System.out.println("\nLet's take a look shall we. So, we have " + numberOfPlayers + " warriors, " + numberOfRounds + " rounds of war and " +
-                numberOfDice + " dice to take to war!\n");
+        System.out.println("\nTake a look we must. So, we have " + numberOfPlayers + " warriors, " + numberOfRounds + " rounds of war and "
+                + numberOfDice + " dice to take to war!\n");
         System.out.println("\n" + "_".repeat(100) + "\n");
         System.out.print("\nIf this is correct, enter 'Y' to start the war or 'N' to start over! ");
         char userChar = CLI.getChar("(" + "Y/N" + "): ");
@@ -44,18 +44,12 @@ public class Menu {
             case 'Y' -> new Game(numberOfPlayers, numberOfRounds, numberOfDice);
             case 'N' -> userOptions();
         }
+
         System.out.println("\n" + "_".repeat(35) + "\n");
         CLI.proceed();
     }
 
-    public static void start() {
-        System.out.println("\n" + "_".repeat(100) + "\n");
-        int numberOfPlayers = CLI.getInt("Enter the amount of players (2 players minimum & 10 players max): ", 2, 10);
-        int numberOfRounds = CLI.getInt("\nEnter the amount of rounds (1 round minimum & 10 rounds max): ", 1, 10);
-        int numberOfDice = CLI.getInt("\nEnter the amount of dice (1 die minimum & 10 dice max): ", 1, 10);
-        System.out.println("\n" + "_".repeat(100) + "\n");
-        System.out.println("\nLet's take a look shall we. So, we have " + numberOfPlayers + " warriors, " + numberOfRounds + " rounds or war and " +
-                numberOfDice + " dice to take to war!");
-//        new Game(numberOfPlayers, numberOfRounds, numberOfDice);
+    public static void diceGraphics() {
+        
     }
 }
