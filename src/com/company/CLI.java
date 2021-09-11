@@ -10,7 +10,6 @@ public class CLI {
     public static String getString(String question) {
 
         System.out.print(question);
-        scan.next();
         return scan.nextLine();
     }
 
@@ -51,6 +50,7 @@ public class CLI {
         while (true) {
             System.out.print(question);
             char userChar = scan.next().toUpperCase().charAt(0);
+            scan.nextLine();
 
             if (userChar != ' ') {
                 return userChar;

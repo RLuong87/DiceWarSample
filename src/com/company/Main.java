@@ -51,10 +51,13 @@ After the game has ended the program should return to the main menu where the us
         Menu.options();
 
         // Simple Pyramid
-//        for (int i = 0; i < 8; i++) {
-//            for (int j = 8; j > i ; j--) {
+//        int pSize = 3;
+//        for (int i = 0; i < pSize; i++) {
+//            for (int j = pSize - 1; j > i; j--) {
 //                System.out.print(" ");
 //            }
+//            System.out.print(" ".repeat(pSize-i-1));
+//            System.out.println("*".repeat(2 * i + 1));
 //            for (int j = 0; j < 2*i+1; j++) {
 //                System.out.print('*');
 //            }
