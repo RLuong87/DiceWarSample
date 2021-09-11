@@ -6,7 +6,7 @@ public class Player {
 
     public ArrayList<Die> playersDice;
     private final String name;
-    private final int score;
+    private int score;
 
     public Player(String name, int playerScore) {
         this.name = name;
@@ -21,8 +21,7 @@ public class Player {
         return score;
     }
 
-    @Override
-    public String toString() {
-        return name;
+    public void setScore(int score) {
+        this.score = score;
     }
 }
