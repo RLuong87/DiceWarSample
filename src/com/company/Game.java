@@ -5,8 +5,9 @@ import java.util.List;
 
 public class Game {
     private final List<Player> players = new ArrayList<>();
-    public Player player = new Player("", 0);
+    public static List<Integer> totalPlayerScore = new ArrayList<>();
     public Die die = new Die(6);
+    private Player player;
     private final int numberOfDice;
 
     public Game(int numberOfPlayers, int numberOfRounds, int numberOfDice) {
@@ -23,15 +24,15 @@ public class Game {
         // Generate the amount of players
         for (int i = 0; i < numberOfPlayers; i++) {
             String playerName = CLI.getString("\nWhat should we call you?: ");
-            Player newPlayer = new Player(playerName, 0);
+            Player newPlayer = new Player(playerName);
             newPlayer.playersDice = generateDice();
             players.add(newPlayer);
         }
     }
 
     public void playerTurn() {
-
         for (Player p : players) {
+            System.out.println(p.getName() + " it is your turn to roll!\nPress enter my friend!");
             CLI.proceed();
             System.out.print(p.getName() + " rolled ");
             roll();
@@ -39,49 +40,39 @@ public class Game {
     }
 
     public void roll() {
-        int totalScore = 0, playersDice;
+        List<Integer> gameScores = new ArrayList<>();
+        int totalScore = 0, diceScore;
 
         for (int i = 0; i < numberOfDice; i++) {
-            playersDice = die.diceRoll();
-            player.setScore(playersDice);
-            System.out.print(playersDice + " ");
-            totalScore += player.getScore();
+            diceScore = die.diceRoll();
+            gameScores.add(diceScore);
+            System.out.print(gameScores.get(i) + " ");
+            totalScore += gameScores.get(i);
         }
         System.out.println();
         System.out.println("-".repeat(16));
-        player.setScore(totalScore);
+//        player.playersDice = new ArrayList<>();
+        totalPlayerScore.add(totalScore);
         System.out.println("Total points: " + totalScore);
-        System.out.println("-".repeat(16));
-    }
-
-    public void checkWinner() {
-        int winnerScore = 0;
-
-        for (int i = 0; i < players.size(); i++) {
-
-            if (player.getScore() > winnerScore) {
-                winnerScore = player.getScore();
-                break;
-            }
-        }
-        System.out.println(winnerScore);
+        System.out.println("-".repeat(16) + "\n");
     }
 
     public void rounds(int numberOfRounds) {
         // Number of rounds method is all set
         for (int i = 0; i < numberOfRounds; i++) {
             CLI.proceed();
-            System.out.println("TESTING 1, 2, 3");
             playerTurn();
             System.out.println();
             System.out.println("""
                     ~~~~~~~~~~~~~~~~~~~~~~~~~
                     Ready for the next round?
-                                        
-                    Press enter my friend!
+                    Press enter my friend! :)
                     ~~~~~~~~~~~~~~~~~~~~~~~~~
                     """);
         }
+        printScore();
+        System.out.println("-".repeat(30));
+        CLI.proceed();
         System.out.println("""
                 You have reached the end my fellow warriors!
                                 
@@ -92,7 +83,14 @@ public class Game {
     }
 
     public void printScore() {
+        int scores = 0;
+        for (int i = 0; i < totalPlayerScore.size(); i++) {
 
+            for (Player p : players) {
+
+                System.out.printf("%d) %s has %d points\n", i + 1, p.getName(), scores);
+            }
+        }
     }
 
     public void showPlayers() {
