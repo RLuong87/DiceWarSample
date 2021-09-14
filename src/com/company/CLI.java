@@ -48,21 +48,26 @@ public class CLI {
     public static char getChar(String question) {
 
         while (true) {
-            System.out.print(question);
-            char userChar = scan.next().toUpperCase().charAt(0);
-            scan.nextLine();
+            try {
+                System.out.print(question);
+                char userChar = scan.next().toUpperCase().charAt(0);
+                scan.nextLine();
 
-            if (userChar != ' ') {
-                return userChar;
-            } else {
+                if (userChar == ' ') {
+                    System.out.println("\nInvalid selection");
+                } else {
+                    return userChar;
+                }
+            } catch (InputMismatchException exception) {
                 System.out.println("\nInvalid selection");
+                scan.nextLine();
             }
         }
     }
 
     public static void exit() {
-        System.out.println("\n" + "*".repeat(45) + "\n");
-        System.out.println("Hope you had good time, until we play again!");
+        System.out.println("\n" + "_".repeat(100) + "\n");
+        System.out.println("Hope you had a good time, until we play again!");
         System.exit(0);
         scan.close();
     }

@@ -1,5 +1,9 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Main {
 
 
@@ -63,5 +67,19 @@ After the game has ended the program should return to the main menu where the us
 //            }
 //            System.out.println();
 //        }
+
+        List<Integer> value = new ArrayList<>();
+
+        value.add(87);
+        value.add(22);
+        value.add(100);
+        value.add(1000);
+        value.add(3);
+
+        Integer max = Collections.max(value);
+
+//        System.out.println("The max value: " + max);
+
+
     }
 }

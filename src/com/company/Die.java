@@ -6,15 +6,14 @@ public class Die {
 
     private final Random random = new Random();
     private final int sides;
-    private final int value;
+    private int value;
 
     public Die(int sides) {
         this.sides = sides;
-        this.value = getValue();
     }
 
-    public int diceRoll() {
-        return random.nextInt(sides) + 1;
+    public void diceRoll() {
+       value = random.nextInt(sides) + 1;
     }
 
     public int getValue() {
