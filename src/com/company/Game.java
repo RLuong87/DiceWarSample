@@ -163,7 +163,7 @@ public class Game {
         for (Player p : players) {
             // Look at the scores of each player
 
-            // If players score is higher than the highestScore variable that's located on line 133, make highestScore equal to p.score
+            // If players score is higher than the highestScore variable, make highestScore equal to p.score
 
             if (p.getScore() > highestScore) {
 
