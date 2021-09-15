@@ -9,8 +9,16 @@ public class CLI {
 
     public static String getString(String question) {
 
-        System.out.print(question);
-        return scan.nextLine();
+        while (true) {
+            System.out.print(question);
+            String userInput = scan.nextLine();
+
+            if (!userInput.equals("")) {
+                return userInput;
+            } else {
+                System.out.println("\nERROR: NO NAME WAS RECORDED. PLEASE ENTER A NAME");
+            }
+        }
     }
 
     public static int getInt(String question) {
@@ -34,7 +42,7 @@ public class CLI {
                 System.out.print(question);
                 int userInt = scan.nextInt();
                 if (userInt < min || userInt > max) {
-                    System.out.println("\nThe minimum amount is " + min + " & the max is " + max + "\n");
+                    System.out.println("\nThe minimum amount is " + min + " & the max is " + max);
                 } else {
                     return userInt;
                 }
@@ -45,18 +53,19 @@ public class CLI {
         }
     }
 
-    public static char getChar(String question) {
+    public static String getStr(String question) {
 
         while (true) {
             try {
                 System.out.print(question);
-                char userChar = scan.next().toUpperCase().charAt(0);
+//                char userChar = scan.next().toUpperCase().charAt(0);
+                String userStr = scan.next().toUpperCase();
                 scan.nextLine();
 
-                if (userChar == ' ') {
-                    System.out.println("\nInvalid selection");
+                if (userStr.length() != 1) {
+                    System.out.println("\nInvalid selection: Enter 'Y' or 'N'");
                 } else {
-                    return userChar;
+                    return userStr;
                 }
             } catch (InputMismatchException exception) {
                 System.out.println("\nInvalid selection");

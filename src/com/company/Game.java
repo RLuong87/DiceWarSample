@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Game {
     private final List<Player> players = new ArrayList<>();
-    private final List<Player> theWinner = new ArrayList<>();
+    private final List<Player> theWinners = new ArrayList<>();
     private final int numberOfDice;
     private final int numberOfRounds;
 
@@ -64,7 +64,7 @@ public class Game {
 //            diceScore = die.roll();
 //            gameScores.add(diceScore);
 //            System.out.print(gameScores.get(i) + " ");
-//            totalScore += gameScores.get(i);
+//            totalScore += diceScore;
 //        }
 //        System.out.println();
 //        System.out.println("-".repeat(16));
@@ -106,9 +106,9 @@ public class Game {
     public void startGame() {
 
         System.out.println("\nOur warriors are set & ready for battle!");
-        System.out.println("-".repeat(30));
+        System.out.println("-".repeat(40));
         showPlayers();
-        System.out.println("-".repeat(30));
+        System.out.println("-".repeat(40));
         System.out.println("Please, press enter to start the war!");
         CLI.pressEnter();
 
@@ -120,35 +120,75 @@ public class Game {
                 CLI.pressEnter();
                 playerTurn(player);
             }
-            Menu.instructions();
+            System.out.println("-".repeat(30));
+            // Fires off after each round has ended
+            System.out.println("Round " + (i + 1) + " has ended\n\nPress enter for the next round!");
+            System.out.println("-".repeat(30) + "\n");
+//            Menu.instructions();
             CLI.pressEnter();
         }
+        System.out.println("Well, it looks like the war is over, press enter to see the game results\n");
+        CLI.pressEnter();
         System.out.println("-".repeat(100));
+        // Showing all the players scores
+        scoreBoard();
+        System.out.println("-".repeat(100));
+        // Check the winner/winners
         checkWinner();
         System.out.println("-".repeat(100) + "\n");
+        System.out.println();
         Menu.endMessage();
         CLI.pressEnter();
+    }
+
+    public void scoreBoard() {
+        System.out.println("S C O R E B O A R D");
+        System.out.println("-".repeat(100));
+        // Loop through the players list to grab their name and scores for the scoreboard
+        for (int i = 0; i < players.size(); i++) {
+            Player p = players.get(i);
+            // Using print format
+            System.out.printf("%d) %s: %d points\n", i + 1, p.getName(), p.getScore());
+        }
     }
 
     public void checkWinner() {
         int highestScore = 0;
         // Loop through the players arraylist
-        String winnersNames = "";
+
+        // String winnerNames = ""; <--- // Also acceptable w/out StringBuilder
+
+        StringBuilder winnersNames = new StringBuilder(); // Using StringBuilder for winner names
+
         for (Player p : players) {
             // Look at the scores of each player
+
+            // If players score is higher than the highestScore variable that's located on line 133, make highestScore equal to p.score
+
             if (p.getScore() > highestScore) {
-                winnersNames = p.getName();
-                highestScore = p.getScore();
-                theWinner.clear();
-                theWinner.add(p);
-            } else if (highestScore == p.getScore()) {
-                winnersNames += ", " + p.getName();
-                theWinner.add(p);
+
+                // winnersNames = p.getName(); <--- // Different approach without the help of StringBuilder
+
+                winnersNames = new StringBuilder(p.getName()); // Concatenate winners name w/ StringBuilder
+
+                highestScore = p.getScore(); // Read line 140
+
+                theWinners.clear(); // clear any players that would be added before finding the final result
+
+                theWinners.add(p); // add the winner to theWinners arraylist
+
+            } else if (highestScore == p.getScore()) { // if scores are even with the highest score
+
+//                winnersNames += ", " + p.getName(); // Different approach without the help of StringBuilder
+
+                winnersNames.append(", ").append(p.getName()); // append all the players names who tied
+
+                theWinners.add(p); // add the winners to the arraylist
             }
         }
-        System.out.println("The winner" + (theWinner.size() == 1 ? " is " : "s are ") + winnersNames + " with a score of " + highestScore);
-
-        // Check the scores against the variable highestScore
+        System.out.println("The winner" + (theWinners.size() == 1 ? " is " : "s are ") + winnersNames + " with a score of " + highestScore
+                + ". Congratulations " + winnersNames + "!");
+    }
 
         /*for (Player p : players) {
 //            System.out.println(p.getScore());
@@ -173,13 +213,17 @@ public class Game {
 //                System.out.println("-".repeat(100) + "\n");
             }
         }
-        Menu.endMessage();*/
-    }
+        Menu.endMessage();
+        }*/
 
     public void showPlayers() {
-
+        // Loop through the players arraylist to grab each player name
         for (int i = 0; i < players.size(); i++) {
+
+            // Gaining access by declaring the variable player
             Player player = players.get(i);
+
+            // using the variable i, add 1 to it to give the index of each player object
             System.out.printf("Player %d) %s\n", i + 1, player.getName());
         }
     }

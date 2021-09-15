@@ -4,9 +4,10 @@ public class Menu {
 
     public static void welcomeMessage() {
 
-        System.out.println("\n" + "_".repeat(25) + "\n");
-        System.out.println("Welcome to DICE WARS!!");
-        System.out.println("\n" + "_".repeat(25) + "\n");
+        System.out.println("\n" + "_".repeat(40) + "\n");
+        System.out.println(" W E L C O M E  T O  D I C E  W A R S!!\n");
+        System.out.println("\tbrought to you by Rich Luong");
+        System.out.println("_".repeat(40) + "\n");
         System.out.println("""
                 The rules are quite simple. Each player will take turns rolling dice.
                 The player with the most points will be the victor!! Are you ready!!""");
@@ -18,11 +19,11 @@ public class Menu {
 
         while (true) {
             System.out.print("\nTo start the war, enter 'Y' or to exit enter 'N' ");
-            char userChar = CLI.getChar("(" + "Y/N" + "): ");
+            String userChar = CLI.getStr("(" + "Y/N" + "): ");
 
             switch (userChar) {
-                case 'Y' -> userOptions();
-                case 'N' -> CLI.exit();
+                case "Y" -> userOptions();
+                case "N" -> CLI.exit();
             }
         }
     }
@@ -42,11 +43,12 @@ public class Menu {
                 + numberOfDice + " dice to take to war!\n");
         System.out.println("\n" + "-".repeat(100) + "\n");
         System.out.print("\nIf this is correct, enter 'Y' to start the war or 'N' to start over! ");
-        char userChar = CLI.getChar("(" + "Y/N" + "): ");
 
+        String userChar = CLI.getStr("(" + "Y/N" + "): ");
         switch (userChar) {
-            case 'Y' -> new Game(numberOfPlayers, numberOfRounds, numberOfDice);
-            case 'N' -> userOptions();
+            case "Y" -> new Game(numberOfPlayers, numberOfRounds, numberOfDice);
+            case "N" -> userOptions();
+            default -> System.out.print("Invalid Input");
         }
         System.out.println("\n" + "-".repeat(100) + "\n");
         CLI.pressEnter();
@@ -54,11 +56,11 @@ public class Menu {
 
     public static void instructions() {
         System.out.println("""
-                    ~~~~~~~~~~~~~~~~~~~~~~~~~
-                    Ready for the next round?
-                    Press enter my friend! :)
-                    ~~~~~~~~~~~~~~~~~~~~~~~~~
-                    """);
+                ~~~~~~~~~~~~~~~~~~~~~~~~~
+                Ready for the next round?
+                Press enter my friend! :)
+                ~~~~~~~~~~~~~~~~~~~~~~~~~
+                """);
     }
 
     public static void endMessage() {
@@ -67,7 +69,7 @@ public class Menu {
                                 
                 If I do not see your faces again then farewell brave warriors!
                                 
-                If you wish to play again or if you wish to exit then simply press enter for options.
+                If you wish to play again or if you wish to exit then simply press enter 2x for options.
                 """);
     }
 }
