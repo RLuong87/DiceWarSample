@@ -171,7 +171,7 @@ public class Game {
 
                 winnersNames = new StringBuilder(p.getName()); // Concatenate winners name w/ StringBuilder
 
-                highestScore = p.getScore(); // Read line 140
+                highestScore = p.getScore(); // Store the player's highest score in the highestScore variable
 
                 theWinners.clear(); // clear any players that would be added before finding the final result
 

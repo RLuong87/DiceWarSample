@@ -12,10 +12,11 @@ public class CLI {
         while (true) {
             System.out.print(question);
             String userInput = scan.nextLine();
-
+            // If empty input is not entered, return userInput
             if (!userInput.equals("")) {
                 return userInput;
             } else {
+                // Output this message if empty input is entered
                 System.out.println("\nERROR: NO NAME WAS RECORDED. PLEASE ENTER A NAME");
             }
         }
@@ -58,7 +59,6 @@ public class CLI {
         while (true) {
             try {
                 System.out.print(question);
-//                char userChar = scan.next().toUpperCase().charAt(0);
                 String userStr = scan.next().toUpperCase();
                 scan.nextLine();
 
