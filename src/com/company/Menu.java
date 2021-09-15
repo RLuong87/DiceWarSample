@@ -49,7 +49,7 @@ public class Menu {
             case 'N' -> userOptions();
         }
         System.out.println("\n" + "-".repeat(100) + "\n");
-        CLI.proceed();
+        CLI.pressEnter();
     }
 
     public static void instructions() {

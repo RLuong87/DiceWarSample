@@ -5,7 +5,7 @@ import java.util.Random;
 public class Die {
 
     private final Random random = new Random();
-    private final int sides;
+    private int sides = 1;
     private int value;
 
     public Die(int sides) {

@@ -77,8 +77,12 @@ After the game has ended the program should return to the main menu where the us
         value.add(3);
 
         Integer max = Collections.max(value);
+        int maxValue = 0;
 
-//        System.out.println("The max value: " + max);
+        for (int i = 0; i < value.size(); i++) {
+
+        }
+
 
 
     }

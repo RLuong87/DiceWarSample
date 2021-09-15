@@ -72,7 +72,7 @@ public class CLI {
         scan.close();
     }
 
-    public static void proceed() {
+    public static void pressEnter() {
         scan.nextLine();
     }
 }

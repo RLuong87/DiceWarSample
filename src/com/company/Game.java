@@ -1,11 +1,11 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Game {
     private final List<Player> players = new ArrayList<>();
+    private final List<Player> theWinner = new ArrayList<>();
     private final int numberOfDice;
     private final int numberOfRounds;
 
@@ -94,12 +94,12 @@ public class Game {
 //    public void rounds(int numberOfRounds) {
 //
 //        for (int i = 0; i < numberOfRounds; i++) {
-//            CLI.proceed();
+//            CLI.pressEnter();
 //            playerTurn();
 //            System.out.println();
 //            Menu.instructions();
 //        }
-//        CLI.proceed();
+//        CLI.pressEnter();
 //        Menu.endMessage();
 //    }
 
@@ -110,26 +110,62 @@ public class Game {
         showPlayers();
         System.out.println("-".repeat(30));
         System.out.println("Please, press enter to start the war!");
-        CLI.proceed();
+        CLI.pressEnter();
+
         for (int i = 0; i < numberOfRounds; i++) {
+
             for (Player player : players) {
                 System.out.println();
-                System.out.println(player.getName() + ", you're up! Show them what true power looks like!");
-                CLI.proceed();
+                System.out.println(player.getName() + ", you're up! Show them what true power looks like!\nPress enter to start your turn!");
+                CLI.pressEnter();
                 playerTurn(player);
             }
             Menu.instructions();
-            CLI.proceed();
+            CLI.pressEnter();
         }
-        List<Integer> winnerScore = new ArrayList<>();
+        System.out.println("-".repeat(100));
+        checkWinner();
+        System.out.println("-".repeat(100) + "\n");
+        Menu.endMessage();
+        CLI.pressEnter();
+    }
 
+    public void checkWinner() {
+        int highestScore = 0;
+        // Loop through the players arraylist
+        String winnersNames = "";
         for (Player p : players) {
-            winnerScore.add(p.getScore());
+            // Look at the scores of each player
+            if (p.getScore() > highestScore) {
+                winnersNames = p.getName();
+                highestScore = p.getScore();
+                theWinner.clear();
+                theWinner.add(p);
+            } else if (highestScore == p.getScore()) {
+                winnersNames += ", " + p.getName();
+                theWinner.add(p);
+            }
+        }
+        System.out.println("The winner" + (theWinner.size() == 1 ? " is " : "s are ") + winnersNames + " with a score of " + highestScore);
 
-            if (p.getScore() == Collections.max(winnerScore)) {
-                int total = p.getScore();
+        // Check the scores against the variable highestScore
+
+        /*for (Player p : players) {
+//            System.out.println(p.getScore());
+
+            for (int j = 0; j < players.size(); j++) {
+
+                if (p.getScore() > highestScore) {
+                    highestScore = p.getScore();
+                    System.out.println(p.getScore());
+                } else if (p.getScore() < highestScore) {
+
+                }
+            }
+
+            if (p.getScore() > highestScore) {
                 System.out.println("-".repeat(100));
-                System.out.println(p.getName() + " IS VICTORIOUS WITH A TOTAL OF " + total + " POINTS! CONGRATULATIONS " + p.getName() + "!!!");
+                System.out.println(p.getName() + " IS VICTORIOUS WITH A TOTAL OF " + highestScore + " POINTS! CONGRATULATIONS " + p.getName() + "!!!");
                 System.out.println("-".repeat(100) + "\n");
 //            } else {
 //                System.out.println("-".repeat(100));
@@ -137,7 +173,7 @@ public class Game {
 //                System.out.println("-".repeat(100) + "\n");
             }
         }
-        Menu.endMessage();
+        Menu.endMessage();*/
     }
 
     public void showPlayers() {
