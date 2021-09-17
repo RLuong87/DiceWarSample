@@ -76,7 +76,7 @@ public class Game {
 
     private void playerTurn(Player player) {
         int sum = 0;
-        ArrayList<Die> playerCurrentRoll = player.rollHand();
+        List<Die> playerCurrentRoll = player.rollHand();
 
         for (Die die : playerCurrentRoll) {
             die.diceRoll();
@@ -230,7 +230,7 @@ public class Game {
 
     private ArrayList<Die> generateDice() {
 
-        ArrayList<Die> tempDice = new ArrayList<>();
+        List<Die> tempDice = new ArrayList<>();
         for (int i = 0; i < numberOfDice; i++) {
             Die die = new Die(6);
             tempDice.add(die);
