@@ -1,1 +1,2 @@
-# DiceWarSample
+# DiceWar CLI Game
+
